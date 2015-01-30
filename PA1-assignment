@@ -2,12 +2,119 @@ COMP4115 PA1
 Assigned: 5 February, 2015
 Deadline: 12 February, 2015
 
-Assignment goes here!
 
-Intall mySQL.
+PART ZERO
 
-Download some test data: https://dev.mysql.com/doc/employee/en/employees-installation.html
+Download and intall mySQL community edition, version 5.6.22, from
+http://dev.mysql.com/downloads/mysql/
 
-And then do something interesting with it! I'm still not sure what.
+mySQL is a free download, but you'll have to create an oracle account
+and answer some questions. It's a little tedious, so allow plenty of time to get it all done.
 
-I also need to update this with pull request stuff. 
+Read the install instructions carefully as well. You'll find a lot of helpful information directly on the mySQL reference manual: http://dev.mysql.com/doc/refman/5.6/en/installing.html
+
+There's a lot of detail in that manual, so here are some key things
+you'll need to do. The specific way you accomplish these tasks will
+depend on your OS. I can definitely help you with anythning Mac- or
+*nix-related, but Windows questions might be best-suited for Piazza.
+
+1. Create mysql-specific user names and groups. Always run mysql with
+a username that requires a password.
+
+2. Set your environment variables so your system recognizes mysql as
+an executable. Your mySQL installation will be somewhere like
+/usr/loca/mysql, and your path variable needs to be able to find
+/usr/local/mysql/bin.  
+
+3. If your system doesn't provide them, make sure you have a mysql
+group and a mysql user, and make sure they have rwx permissions on the
+entire mysql directory.
+
+4. Run mysql_install_db to set up the initial tables. If it throws any
+errors, read them carefully and make sure you fix them before
+continuing.  
+
+5. Kick off the mysql server, which will be need to be running before
+you can actually log into it with mysql client.
+
+
+
+PART ONE. 25 points.
+
+This first problem just warms us up with mySQL once you have it
+installed. Note that I'm just asking you simple questions, and you
+might need to look up the exact commands to make them happen.
+
+1. As part of your mySQL installation, you should have a database
+called 'test'. Switch to this database with the 'use' command. What
+tables does it have?
+
+2. Now switch to the built-in 'mysql' database. What are the columns
+in the 'func' table? List all pertinent info. How many records exist
+in the table?  What do you suppose this table is used to store?
+
+3. Create a new database called "us_states". In this database, add a
+table called "states". Add 5 columns to the table: state name (a
+string), population (an integer), an ID field, and two more of your
+own choosing. Of the two your-choice fields, at least one should be an
+ENUM. The ID field should be a primary key that auto-increments.
+
+Using the insert command, add 10 states to your table one at a time
+(using real or completely made up population data). 
+Run queries to:
+* List all the columns in your table,
+* output the states in descending order of population, and
+* some other query of your choice that tells me something interesting about your data.
+
+Copy/paste the result of running these queries as part of your homework submission.
+
+
+PART TWO. 35 points.
+
+Now we're going to build on that database you created in Part
+One. There are 40 more states to add, but it's tedious to do them one
+record at a time.
+
+So instead, create a new file called states.txt. Each entry in your
+text file should map to the 5 columns you defined for your states
+table. Enter all remaining 40 US states (again, you can approximate or
+guess at the actual populations and other fields).
+
+Save your .txt file, and load it into your states table with the LOAD DATA command.
+
+Run a query to output your states again, this time in alphabetical
+order by state name. 
+
+For this part of the assignment, you should turn in two things via
+github (some research might be required to figure out how to do them):
+1. The result of running that query, saved as a .txt file.  
+2. Your states database itself. Turn in the appropriate database file,
+along with any necessary accompanying files, and zip them into a
+tarball. Muktadir and I will unzip the tarball and load your database to evaluate it.
+
+
+PART THREE. 40 points.
+
+Now we'll use some existing data instead of making our own. For this
+part, instead of turning in the result of running some sql commands,
+you'll actually save your commands in a .sql file. You (and I) should
+be able to execute everything flawlessly my calling mysql and loading
+in your file.
+
+I'll be using the same sample data as you to test your programs, so
+don't alter any of the database names or schema.
+
+Grab the sampledatabase.zip file that's included in the git repo for
+this assignment. Load it into mysql. It contains a database called "classicmodels."
+
+Take some time to familiarize yourself with the
+schema and details of classicmodels.
+
+Write several (8-10) SQL queries to illustrate how this database could
+be used in practice. You should try to use a wide variety of the SQL
+constructs we've discussed in class and in the textbook. You will not
+receive full credit if your queries and modifications are all
+extremely simple and/or boring.
+
+For this part, your submission should include a .sql file with all of
+your queries as well as a readme describing what your various queries demonstrate about the data.
